@@ -3,7 +3,6 @@
 
 .gradletasknamecache
 .gradle/
-gradle/
 
 .idea/
 *.iml

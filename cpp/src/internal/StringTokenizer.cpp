@@ -9,7 +9,7 @@ bool StringTokenizer::hasMoreTokens() const {
   return str.isInRange(current);
 }
 
-inline void StringTokenizer::assertValidLetter(int pos) const {
+void StringTokenizer::assertValidLetter(int pos) const {
   auto isValid = str.startWithLetter(pos) || str.startWithDigit(pos);
   if (!isValid)
     throw std::invalid_argument(std::string("contains invalid char: ") + str[pos]);

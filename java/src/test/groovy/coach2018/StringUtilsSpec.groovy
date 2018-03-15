@@ -1,4 +1,4 @@
-package cn.com.zte.coach
+package coach2018
 
 import spock.lang.Specification
 

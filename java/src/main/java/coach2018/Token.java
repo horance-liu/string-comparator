@@ -1,4 +1,4 @@
-package cn.com.zte.coach;
+package coach2018;
 
 import java.util.HashMap;
 import java.util.Map;

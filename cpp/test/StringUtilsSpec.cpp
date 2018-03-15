@@ -98,19 +98,19 @@ FIXTURE(StringUtilsSpec)
 
   TEST("numeric string: start with escape letter and end with escape letter") {
     ASSERT_THAT(compare("\\A22\\A", "65286"), eq(-1));
-    ASSERT_THAT(compare("\\A22\\A", "65285"), eq(1)); // len(4) VS. len(5)
+    ASSERT_THAT(compare("\\A22\\A", "65285"), eq(-1)); // len(4) VS. len(5)
     ASSERT_THAT(compare("\\A22\\A", "65284"), eq(1));
   }
 
   TEST("numeric string: same value but different length") {
     // 8 * 100 + 65 * 10 + 65 = 1515(len=3) VS. 1515(len=4)
-    ASSERT_THAT(compare("8\\A\\A", "1515"), eq(1));
+    ASSERT_THAT(compare("8\\A\\A", "1515"), eq(-1));
   }
 
   TEST("numeric | alphabetic | numeric") {
     // 5 * 100 + 65 * 10 + 66 = 1216(len=3) | "2333" | 5 * 10 + 65 = 115(len=2)
     // 5 * 100 + 65 * 10 + 66 = 1216(len=3) | "2333" | 115(len=3)
-    ASSERT_THAT(compare("5\\A\\B\\2\\3335\\A", "5\\A\\B\\2\\333115"), eq(1));
+    ASSERT_THAT(compare("5\\A\\B\\2\\3335\\A", "5\\A\\B\\2\\333115"), eq(-1));
   }
 
   TEST("contains invalid chars") {

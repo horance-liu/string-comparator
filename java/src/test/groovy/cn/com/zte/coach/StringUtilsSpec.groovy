@@ -132,34 +132,22 @@ class StringUtilsSpec extends Specification {
     }
 
     def "contains invalid chars"() {
-        when:
-        compare("555*ddd", "555*ddd")
-
-        then:
-        thrown(IllegalArgumentException)
+        expect:
+        compare("555*ddd", "555*ddd") == -2
     }
 
     def "invalid escape digits"() {
-        when:
-        compare("a\\*a", "a\\*a")
-
-        then:
-        thrown(IllegalArgumentException)
+        expect:
+        compare("a\\*a", "a\\*a") == -2
     }
 
     def "invalid escape letters"() {
-        when:
-        compare("5\\*5", "5\\*5")
-
-        then:
-        thrown(IllegalArgumentException)
+        expect:
+        compare("5\\*5", "5\\*5") == -2
     }
 
     def "same head, but tail contains invalid chars"() {
-        when:
-        compare("aaa123aaa123", "aaa123aaa123***")
-
-        then:
-        thrown(IllegalArgumentException)
+        expect:
+        compare("aaa123aaa123", "aaa123aaa123***") == -2
     }
 }

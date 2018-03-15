@@ -49,6 +49,6 @@ class NumericToken extends Token {
     protected int safeCompareTo(Token token) {
         NumericToken other = (NumericToken)token;
         int result = compare(value, other.value);
-        return result == 0 ? compare(length, other.length) : result;
+        return result == 0 ? compare(other.length, length) : result;
     }
 }

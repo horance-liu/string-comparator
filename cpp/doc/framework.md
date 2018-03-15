@@ -35,5 +35,10 @@ int compare(const std::string& s1, const std::string& s2) {
 
 ## Design
 
+- `Token`: process different comparing rules.
+- `TokenBuilder`: process different building rules.
+- `TokenScanner`: process different scanning rules.
+- `StringTokenizer`: iterator for searching underlying string.
+
 ![Architecture Design](framework.png)
 

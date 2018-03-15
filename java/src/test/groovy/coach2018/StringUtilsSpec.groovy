@@ -114,21 +114,21 @@ class StringUtilsSpec extends Specification {
     def "numeric string: start with escape letter and end with escape letter"() {
         expect:
         compare("\\A22\\A", "65286") == -1
-        compare("\\A22\\A", "65285") == 1  // same value, but len(4) VS. len(5)
+        compare("\\A22\\A", "65285") == -1  // same value, but len(4) VS. len(5)
         compare("\\A22\\A", "65284") == 1
     }
 
     def "numeric string: same value but different length"() {
         expect:
         // 8 * 100 + 65 * 10 + 65 = 1515(len=3) VS. 1515(len=4)
-        compare("8\\A\\A", "1515") == 1
+        compare("8\\A\\A", "1515") == -1
     }
 
     def "numeric | alphabetic | numeric"() {
         expect:
         // 5 * 100 + 65 * 10 + 66 = 1216(len=3) | "2333" | 5 * 10 + 65 = 115(len=2)
         // 5 * 100 + 65 * 10 + 66 = 1216(len=3) | "2333" | 115(len=3)
-        compare("5\\A\\B\\2\\3335\\A", "5\\A\\B\\2\\333115") == 1
+        compare("5\\A\\B\\2\\3335\\A", "5\\A\\B\\2\\333115") == -1
     }
 
     def "contains invalid chars"() {

@@ -31,7 +31,7 @@ namespace {
 
   private:
     static int intValue(char c) {
-      return std::isdigit(c) ? c - '0' : c;
+      return std::isdigit(c) ? (c - '0') : c;
     }
 
   private:

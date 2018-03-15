@@ -62,6 +62,8 @@ namespace {
       return str.isInRange(pos) && str.isDigit(pos);
     }
 
+    enum { MAX_NUM_LENGTH = 3 };
+
     int escape(int pos) const override {
       auto i = 0;
       while (i < MAX_NUM_LENGTH && isEscape(pos + i)) {
@@ -70,8 +72,6 @@ namespace {
       }
       return pos + i;
     }
-
-    enum { MAX_NUM_LENGTH = 3 };
   };
 
   struct NumericTokenScanner: TokenScanner {

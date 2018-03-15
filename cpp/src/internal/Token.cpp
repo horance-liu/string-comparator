@@ -1,6 +1,5 @@
 #include "internal/Token.h"
 #include <map>
-#include <iostream>
 
 namespace {
   inline int compare(int x, int y) {

@@ -9,7 +9,7 @@ struct StringBuffer;
 
 struct TokenScanner {
   TokenScanner(TokenBuilder* buff, const StringBuffer& str);
-  virtual ~TokenScanner() {}
+  virtual ~TokenScanner();
 
   Token* nextToken(int& pos) const;
 

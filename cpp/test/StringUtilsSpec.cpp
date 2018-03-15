@@ -113,27 +113,19 @@ FIXTURE(StringUtilsSpec)
     ASSERT_THAT(compare("5\\A\\B\\2\\3335\\A", "5\\A\\B\\2\\333115"), eq(-1));
   }
 
-  TEST("contains invalid chars, should throw exception") {
-    ASSERT_TRUE(throwing<std::invalid_argument>([]{
-        compare("555*ddd", "555*ddd");
-    }));
+  TEST("contains invalid chars") {
+    ASSERT_THAT(compare("555*ddd", "555*ddd"), eq(-2));
   }
 
-  TEST("invalid escape digits, should throw exception") {
-    ASSERT_TRUE(throwing<std::invalid_argument>([]{
-        compare("a\\*a", "a\\*a");
-    }));
+  TEST("invalid escape digits") {
+    ASSERT_THAT(compare("a\\*a", "a\\*a"), eq(-2));
   }
 
-  TEST("invalid escape letters, should throw exception") {
-    ASSERT_TRUE(throwing<std::invalid_argument>([]{
-        compare("5\\*5", "5\\*5");
-    }));
+  TEST("invalid escape letters") {
+    ASSERT_THAT(compare("5\\*5", "5\\*5"), eq(-2));
   }
 
-  TEST("same head but tail contains invalid chars, should throw exception") {
-    ASSERT_TRUE(throwing<std::invalid_argument>([]{
-        compare("aaa123aaa123", "aaa123aaa123***");
-    }));
+  TEST("same head but tail contains invalid chars") {
+    ASSERT_THAT(compare("aaa123aaa123", "aaa123aaa123***"), eq(-2));
   }
 };

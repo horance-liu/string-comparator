@@ -28,7 +28,7 @@ namespace {
     int safeCompareTo(const Token& token) const override {
       auto& other = dynamic_cast<const NumericToken&>(token);
       auto result = compare(value, other.value);
-      return result == 0 ? compare(other.length, length) : result;
+      return result == 0 ? compare(length, other.length) : result;
     }
 
   private:

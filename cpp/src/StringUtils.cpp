@@ -26,7 +26,7 @@ namespace {
 int compare(const std::string& s1, const std::string& s2) {
   try {
     return doCompare(s1, s2);
-  } catch (...) {
+  } catch (const std::invalid_argument&) {
     return -2;
   }
 }

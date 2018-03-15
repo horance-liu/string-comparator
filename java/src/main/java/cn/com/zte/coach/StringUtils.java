@@ -4,7 +4,7 @@ public final class StringUtils {
     private StringUtils() {
     }
 
-    public static int compare(String s1, String s2) {
+    private static int doCompare(String s1, String s2) {
         StringTokenizer st1 = new StringTokenizer(s1);
         StringTokenizer st2 = new StringTokenizer(s2);
 
@@ -17,5 +17,13 @@ public final class StringUtils {
         if (st1.hasRemained()) return 1;
         if (st2.hasRemained()) return -1;
         return 0;
+    }
+    
+    public static int compare(String s1, String s2) {
+        try {
+            return doCompare(s1, s2);
+        } catch (IllegalArgumentException e) {
+            return -2;
+        }
     }
 }
